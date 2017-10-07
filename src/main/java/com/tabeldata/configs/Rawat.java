@@ -18,11 +18,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Pasien {
+public class Rawat {
 
     private Integer id;
-    private String nama;
-    private String alamat;
-    private Date tanggalLahir;
-    
+    private Integer pasienId;
+    private Integer dokterId;
+    private Integer ruangId;
+    private Date waktuRegister;
+    private Date waktuCheckout;
+
 }

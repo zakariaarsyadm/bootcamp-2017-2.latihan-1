@@ -31,13 +31,13 @@ public class DatabaseConnection {
     }
     
     public static void main(String[] args) throws SQLException {
-        DatabaseConnection koneksiDB = new DatabaseConnection();
-        Connection connection = koneksiDB.getDataSource().getConnection();
-        if (connection != null) {
-            System.out.println("Database Connection Success");
-        } else {
-            System.out.println("Database Connection Failed");
-        }
+//        DatabaseConnection koneksiDB = new DatabaseConnection();
+//        Connection connection = koneksiDB.getDataSource().getConnection();
+//        if (connection != null) {
+//            System.out.println("Database Connection Success");
+//        } else {
+//            System.out.println("Database Connection Failed");
+//        }
     }
 
 }
