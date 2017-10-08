@@ -47,7 +47,7 @@ public class DokterAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/pages/dokter/tambahDokter.jsp");
+        req.getRequestDispatcher("/pages/dokter/tambahDokter.jsp").forward(req, resp);
     }
 
     /**
@@ -72,6 +72,7 @@ public class DokterAddController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(DokterAddController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resp.sendRedirect(new StringBuilder(req.getServletContext().getContextPath()).append("/dokter/list").toString());
         
     }
 

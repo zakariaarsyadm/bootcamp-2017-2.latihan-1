@@ -6,6 +6,7 @@
 package com.zakaria.test;
 
 import com.tabeldata.dao.PasienDao;
+import com.tabeldata.dao.RuangDao;
 import java.sql.SQLException;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -16,11 +17,12 @@ import org.junit.Test;
  */
 public class PasienDaoTest extends TestCase{
     
-//    private PasienDao pasienDao = new PasienDao();
-//    
-//    @Test
-//    public void testSaveDataPasien() throws SQLException {
-//        pasienDao.save();
-//    }
+    private PasienDao pasienDao = new PasienDao();
+    private RuangDao ruangDao = new RuangDao();
+    
+    @Test
+    public void testSaveDataRuang() throws SQLException {
+//        ruangDao.save();
+    }
     
 }

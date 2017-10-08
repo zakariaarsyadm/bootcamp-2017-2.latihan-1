@@ -53,6 +53,7 @@ public class RuangDeleteController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(RuangDeleteController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resp.sendRedirect(req.getServletContext().getContextPath()+"/ruang/");
     }
 
     /**

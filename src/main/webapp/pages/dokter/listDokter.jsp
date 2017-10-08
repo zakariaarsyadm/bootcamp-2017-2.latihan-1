@@ -23,8 +23,8 @@
                         <td>${index.count}</td>
                         <td>${yaDokter.nama}</td>
                         <td>${yaDokter.spesialis}</td>
-                        <td>Hapus</td>
-                        <td>Ubah</td>
+                        <td><a href="${pageContext.servletContext.contextPath}/dokter/ubah?kodeDokter=${yaDokter.id}">Ubah</a></td>
+                        <td><a href="${pageContext.servletContext.contextPath}/dokter/delete?kodeDokter=${yaDokter.id}">Hapus</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

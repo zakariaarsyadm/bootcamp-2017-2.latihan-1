@@ -27,11 +27,27 @@ public class RuangDao {
         DataSource dataSource = DBconnect.getDataSource();
         Connection connection = dataSource.getConnection();
         
-        String sql = "insert into latihan_1.ruang (no_ruang,kosong) values (?,?)";
+        String sql = "insert into latihan_1.ruang (no_ruangan,kosong) values (?,?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         
         statement.setString(1, ruang.getNoRuangan());
         statement.setBoolean(2, ruang.getKosong());
+        
+        statement.executeUpdate();
+        statement.close();
+        connection.close();    
+    }
+    
+    public void save() throws SQLException {
+        DatabaseConnection DBconnect = new DatabaseConnection();
+        DataSource dataSource = DBconnect.getDataSource();
+        Connection connection = dataSource.getConnection();
+        
+        String sql = "insert into latihan_1.ruang (no_ruangan,kosong) values (?,?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setString(1, "A101");
+        statement.setBoolean(2, true);
         
         statement.executeUpdate();
         statement.close();
@@ -57,7 +73,7 @@ public class RuangDao {
         DataSource dataSource = databaseConnection.getDataSource();
         Connection connection = dataSource.getConnection();
         
-        String sql = "update latihan_1.ruang set no_ruang = ?, set kosong = ? where id = ?";
+        String sql = "update latihan_1.ruang set no_ruangan = ?, set kosong = ? where id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         
         statement.setString(1, ruang.getNoRuangan());
@@ -86,7 +102,7 @@ public class RuangDao {
             Ruang ruang = new Ruang();
             
             ruang.setId(resultSet.getInt("id"));
-            ruang.setNoRuangan(resultSet.getString("no_ruang"));
+            ruang.setNoRuangan(resultSet.getString("no_ruangan"));
             ruang.setKosong(resultSet.getBoolean("kosong"));
             
             listRuang.add(ruang);
@@ -104,7 +120,7 @@ public class RuangDao {
         DataSource dataSource = databaseConnection.getDataSource();
         Connection connection = dataSource.getConnection();
         
-        String sql = "select id,no_ruang,kosong from latihan_1.ruang where id = ?";
+        String sql = "select id,no_ruangan,kosong from latihan_1.ruang where id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, kodeRuang);
         ResultSet resultSet = statement.executeQuery();
@@ -114,7 +130,7 @@ public class RuangDao {
         if (resultSet.next()) {
             
             ruang.setId(resultSet.getInt("id"));
-            ruang.setNoRuangan(resultSet.getString("no_ruang"));
+            ruang.setNoRuangan(resultSet.getString("no_ruangan"));
             ruang.setKosong(Boolean.valueOf(resultSet.getString("kosong")));
         }
         

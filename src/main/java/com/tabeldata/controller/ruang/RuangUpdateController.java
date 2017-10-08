@@ -72,7 +72,7 @@ public class RuangUpdateController extends HttpServlet {
         Ruang ruang = new Ruang();
         
         ruang.setId(Integer.valueOf(req.getParameter("id")));
-        ruang.setNoRuangan(String.valueOf(req.getParameter("noRuang")));
+        ruang.setNoRuangan(String.valueOf(req.getParameter("noRuangan")));
         ruang.setKosong(Boolean.valueOf(req.getParameter("kosong")));
         
         RuangDao ruangDao = new RuangDao();

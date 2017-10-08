@@ -56,7 +56,7 @@ public class DokterUpdateController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(DokterUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        req.getRequestDispatcher("/pages/dokter/editDokter.jsp");
+        req.getRequestDispatcher("/pages/dokter/editDokter.jsp").forward(req, resp);
     }
 
     /**
@@ -73,8 +73,8 @@ public class DokterUpdateController extends HttpServlet {
        Dokter dokter = new Dokter();
        
        dokter.setId(Integer.valueOf(req.getParameter("id")));
-       dokter.setNama(String.valueOf(req.getParameter("nama")));
-       dokter.setSpesialis(String.valueOf(req.getParameter("spesialis")));
+       dokter.setNama(req.getParameter("nama"));
+       dokter.setSpesialis(req.getParameter("spesialis"));
        
        DokterDao dokterDao = new DokterDao();
         try {

@@ -62,7 +62,7 @@ public class RuangAddController extends HttpServlet {
             throws ServletException, IOException {
         Ruang ruang = new Ruang();
 
-        ruang.setNoRuangan(req.getParameter("nama"));
+        ruang.setNoRuangan(req.getParameter("noRuangan"));
         ruang.setKosong(Boolean.valueOf(req.getParameter("kosong")));
 
         RuangDao ruangDao = new RuangDao();
@@ -72,6 +72,7 @@ public class RuangAddController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(RuangAddController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resp.sendRedirect(new StringBuilder(req.getServletContext().getContextPath()).append("/ruang/list").toString());
 
     }
 

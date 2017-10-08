@@ -52,7 +52,7 @@ public class PasienUpdateController extends HttpServlet {
             Pasien yaPasien;
             yaPasien = new PasienDao().findById(kodePasien);
             req.setAttribute("pasien", yaPasien);
-            req.getRequestDispatcher("/pasien/editPasien.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/pasien/editPasien.jsp").forward(req, resp);
 
         } catch (SQLException ex) {
             Logger.getLogger(PasienUpdateController.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,9 +73,11 @@ public class PasienUpdateController extends HttpServlet {
             throws ServletException, IOException {
         Pasien pasien = new Pasien();
         pasien.setId(Integer.valueOf(req.getParameter("id")));
-        pasien.setNama(String.valueOf(req.getParameter("nama")));
-        pasien.setAlamat(String.valueOf(req.getParameter("alamat")));
+        pasien.setNama(req.getParameter("nama"));
+        pasien.setAlamat(req.getParameter("alamat"));
         pasien.setTanggalLahir(Date.valueOf(req.getParameter("tanggalLahir")));
+        
+        System.out.println(pasien.toString());
 
         PasienDao pasienDao = new PasienDao();
         try {

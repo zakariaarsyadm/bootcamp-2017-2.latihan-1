@@ -20,10 +20,11 @@
                 <c:forEach items="${listRuang}" var="yaRuang" varStatus="index">
                     <tr>
                         <td>${index.count}</td>
-                        <td>${yaRuang.noRuang}</td>
+                        <td>${yaRuang.noRuangan}</td>
                         <td>${yaRuang.kosong}</td>
-                        <td>Ubah</td>
-                        <td>Hapus</td>
+                        <td><a href="${pageContext.servletContext.contextPath}/ruang/ubah?kodeRuang=${yaRuang.id}">Ubah</a></td>
+                        <td><a href="${pageContext.servletContext.contextPath}/ruang/delete?kodeRuang=${yaRuang.id}">Hapus</a></td>
+                   
                     </tr>
                 </c:forEach>
             </tbody>

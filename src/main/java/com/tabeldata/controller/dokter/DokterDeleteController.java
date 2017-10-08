@@ -53,7 +53,7 @@ public class DokterDeleteController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(DokterDeleteController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        resp.sendRedirect(req.getServletContext().getContextPath()+"/dokter");
+        resp.sendRedirect(req.getServletContext().getContextPath()+"/dokter/");
         
     }
 

@@ -55,7 +55,7 @@ public class PasienDeleteController extends HttpServlet {
             Logger.getLogger(PasienDeleteController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        resp.sendRedirect(req.getServletContext().getContextPath()+"/pasien");
+        resp.sendRedirect(req.getServletContext().getContextPath()+"/pasien/");
     }
 
     /**

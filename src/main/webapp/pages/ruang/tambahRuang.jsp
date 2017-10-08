@@ -6,10 +6,10 @@
         <title>Tambah Ruang</title>
     </head>
     <body>
-        <form action="${pageContext.servletContext.getContext(uripath)}/ruang/add" method="post">
+        <form action="${pageContext.servletContext.contextPath}/ruang/add" method="post">
             <div>
-                <label for="noRuang">No Ruang</label>
-                <input type="text" name="noRuang" id="noRuang"/>
+                <label for="noRuangan">No Ruang</label>
+                <input type="text" name="noRuangan" id="noRuangan"/>
             </div>
             <div>
                 <label for="kosong">Kosong ?</label>
@@ -17,6 +17,10 @@
                     <option value="true">Ya</option>
                     <option value="false">Tidak</option>
                 </select>
+            </div>
+            <div>
+                <button type="submit">Kirim</button>
+                <button type="reset">Reset</button>
             </div>
         </form>
     </body>

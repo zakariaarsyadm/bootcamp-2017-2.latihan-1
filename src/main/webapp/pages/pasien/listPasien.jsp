@@ -24,8 +24,8 @@
                         <td>${yaPasien.nama}</td>
                         <td>${yaPasien.alamat}</td>
                         <td>${yaPasien.tanggalLahir}</td>
-                        <td>Hapus</td>
-                        <td>Ubah</td>
+                        <td><a href="${pageContext.servletContext.contextPath}/pasien/ubah?kodePasien=${yaPasien.id}">Ubah</a></td>
+                        <td><a href="${pageContext.servletContext.contextPath}/pasien/delete?kodePasien=${yaPasien.id}">Hapus</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
