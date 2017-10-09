@@ -7,14 +7,15 @@
         <title>List Dokter</title>
     </head>
     <body>
-        <table>
+        <h1 align="center">Daftar Dokter</h1>
+        <table frame="box" border="1" align="center">
             <thead>
                 <tr>
                     <td>No</td>
                     <td>Nama</td>
                     <td>Spesialis</td>
                     <td>Aksi</td>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -29,5 +30,12 @@
                 </c:forEach>
             </tbody>
         </table>
+        <p></p>
+        <div>
+            <!--<a href="localhost/latihan-1/pages/pasien/tambahPasien.jsp">Tambah pasien klik disini</a>-->
+            <form action="add" align="center">
+                <input type="submit" value="Tambah Dokter" />
+            </form>
+        </div>
     </body>
 </html>
