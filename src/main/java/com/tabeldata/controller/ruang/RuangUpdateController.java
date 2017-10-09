@@ -46,15 +46,15 @@ public class RuangUpdateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Integer kodeRuang = Integer.valueOf(req.getParameter("kodeRuang"));
-        Ruang yaRuang;
         try {
-            yaRuang = new RuangDao().findById(kodeRuang);
-            req.setAttribute("yaRuang", yaRuang);
+            Integer kodeRuang = Integer.valueOf(req.getParameter("kodeRuang"));
+            Ruang yaRuang = new RuangDao().findById(kodeRuang);
+            req.setAttribute("ruang", yaRuang);
+            req.getRequestDispatcher("/pages/ruang/editRuang.jsp").forward(req, resp);
+            System.out.println("Kita di DoGet");
         } catch (SQLException ex) {
             Logger.getLogger(RuangUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        req.getRequestDispatcher("/pages/ruang/editRuang.jsp").forward(req, resp);
 
     }
 
@@ -69,18 +69,24 @@ public class RuangUpdateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        System.out.println("doPost awal");
         Ruang ruang = new Ruang();
-        
+
         ruang.setId(Integer.valueOf(req.getParameter("id")));
-        ruang.setNoRuangan(String.valueOf(req.getParameter("noRuangan")));
+        ruang.setNoRuangan(req.getParameter("noRuangan"));
         ruang.setKosong(Boolean.valueOf(req.getParameter("kosong")));
         
+        System.out.println("Kita di doPost tapi belum update nih");
+
         RuangDao ruangDao = new RuangDao();
         try {
             ruangDao.update(ruang);
+            System.out.println("Baru eksekusi update");
         } catch (SQLException ex) {
             Logger.getLogger(RuangUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resp.sendRedirect(req.getServletContext().getContextPath() + "/ruang/");
+        System.out.println("Baru send redirect ya");
     }
 
     /**

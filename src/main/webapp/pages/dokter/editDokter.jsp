@@ -7,13 +7,14 @@
     </head>
     <body>
         <form action="${pageContext.servletContext.contextPath}/dokter/ubah" method="post">
+            <input type="hidden" name="id" value="${dokter.id}">
             <div>
                 <label for ="nama">Nama</label>
-                <input type="text" name="nama" id="${dokter.nama}"/>
+                <input type="text" name="nama" id="nama" value="${dokter.nama}"/>
             </div>
             <div>
                 <label for="spesialis">Spesialis</label>
-                <input type="text" name="spesialis" id="${dokter.spesialis}"/>
+                <input type="text" name="spesialis" id="spesialis" value="${dokter.spesialis}"/>
             </div>
             <div>
                 <button type="submit">Kirim</button>

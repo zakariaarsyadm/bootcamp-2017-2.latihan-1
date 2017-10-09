@@ -47,7 +47,7 @@ public class PasienDao {
         DataSource dataSource = DBconnect.getDataSource();
         Connection connection = dataSource.getConnection();
         
-        String sql = "update latihan_1.pasien set nama = ?, set alamat = ?, set tanggal_lahir = ? where id = ?";
+        String sql = "update latihan_1.pasien set nama = ?, alamat = ?, tanggal_lahir = ? where id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         
         statement.setString(1, pasien.getNama());
@@ -118,6 +118,7 @@ public class PasienDao {
         ResultSet resultSet = statement.executeQuery();
         
         Pasien pasien = new Pasien();
+        pasien.toString();
         
         if (resultSet.next()) {
             pasien.setId(resultSet.getInt("id"));

@@ -38,21 +38,21 @@ public class RuangDao {
         connection.close();    
     }
     
-    public void save() throws SQLException {
-        DatabaseConnection DBconnect = new DatabaseConnection();
-        DataSource dataSource = DBconnect.getDataSource();
-        Connection connection = dataSource.getConnection();
-        
-        String sql = "insert into latihan_1.ruang (no_ruangan,kosong) values (?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        
-        statement.setString(1, "A101");
-        statement.setBoolean(2, true);
-        
-        statement.executeUpdate();
-        statement.close();
-        connection.close();    
-    }
+//    public void save() throws SQLException {
+//        DatabaseConnection DBconnect = new DatabaseConnection();
+//        DataSource dataSource = DBconnect.getDataSource();
+//        Connection connection = dataSource.getConnection();
+//        
+//        String sql = "insert into latihan_1.ruang (no_ruangan,kosong) values (?,?)";
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        
+//        statement.setString(1, "A101");
+//        statement.setBoolean(2, true);
+//        
+//        statement.executeUpdate();
+//        statement.close();
+//        connection.close();    
+//    }
     
     public void delete(Integer kodeRuang) throws SQLException {
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -73,7 +73,9 @@ public class RuangDao {
         DataSource dataSource = databaseConnection.getDataSource();
         Connection connection = dataSource.getConnection();
         
-        String sql = "update latihan_1.ruang set no_ruangan = ?, set kosong = ? where id = ?";
+        System.out.println(ruang);
+        
+        String sql = "update latihan_1.ruang set no_ruangan = ?, kosong = ? where id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         
         statement.setString(1, ruang.getNoRuangan());
@@ -100,7 +102,6 @@ public class RuangDao {
         
         while (resultSet.next()) {
             Ruang ruang = new Ruang();
-            
             ruang.setId(resultSet.getInt("id"));
             ruang.setNoRuangan(resultSet.getString("no_ruangan"));
             ruang.setKosong(resultSet.getBoolean("kosong"));
@@ -126,6 +127,7 @@ public class RuangDao {
         ResultSet resultSet = statement.executeQuery();
         
         Ruang ruang = new Ruang();
+        ruang.toString();
         
         if (resultSet.next()) {
             

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tabeldata.controller.pasien;
+package com.tabeldata.controller.rawat;
 
-import com.tabeldata.configs.Pasien;
-import com.tabeldata.dao.PasienDao;
+import com.tabeldata.configs.Rawat;
+import com.tabeldata.dao.RawatDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author namhee
  */
-@WebServlet(urlPatterns = {"/pasien/ubah"})
-public class PasienUpdateController extends HttpServlet {
+@WebServlet(urlPatterns = {"/rawat/list", "/rawat/"})
+public class RawatListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,6 +35,22 @@ public class PasienUpdateController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet TransaksiListController</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet TransaksiListController at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
+//    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -47,16 +63,16 @@ public class PasienUpdateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         try {
-            Integer kodePasien = Integer.valueOf(req.getParameter("kodePasien"));
-            Pasien yaPasien = new PasienDao().findById(kodePasien);
-            req.setAttribute("pasien", yaPasien);
-            req.getRequestDispatcher("/pages/pasien/editPasien.jsp").forward(req, resp);
+            
+            List<Rawat> listRawat = new RawatDao().listRawat();
+            req.setAttribute("listRawat", listRawat);
 
         } catch (SQLException ex) {
-            Logger.getLogger(PasienUpdateController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RawatListController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        req.getRequestDispatcher("/pages/rawat/listRawat.jsp").forward(req, resp);
     }
 
     /**
@@ -67,26 +83,11 @@ public class PasienUpdateController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        Pasien pasien = new Pasien();
-        pasien.setId(Integer.valueOf(req.getParameter("id")));
-        pasien.setNama(req.getParameter("nama"));
-        pasien.setAlamat(req.getParameter("alamat"));
-        pasien.setTanggalLahir(Date.valueOf(req.getParameter("tanggalLahir")));
-        
-        System.out.println(pasien.toString());
-
-        PasienDao pasienDao = new PasienDao();
-        try {
-            pasienDao.update(pasien);
-        } catch (SQLException ex) {
-            Logger.getLogger(PasienUpdateController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        resp.sendRedirect(req.getServletContext().getContextPath()+"/pasien/");
-    }
-
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        processRequest(request, response);
+//    }
     /**
      * Returns a short description of the servlet.
      *

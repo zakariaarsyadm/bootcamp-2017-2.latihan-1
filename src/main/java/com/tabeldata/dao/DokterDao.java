@@ -43,7 +43,7 @@ public class DokterDao {
         DataSource dataSource = DBconnect.getDataSource();
         Connection connection = dataSource.getConnection();
 
-        String sql = "update latihan_1.dokter set nama=?, set spesialis=? where id=? ";
+        String sql = "update latihan_1.dokter set nama=?, spesialis=? where id=? ";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.setString(1, dokter.getNama());
@@ -108,6 +108,7 @@ public class DokterDao {
         ResultSet resultSet = statement.executeQuery();
         
         Dokter dokter = new Dokter();
+        dokter.toString();
         
         if (resultSet.next()) {
             dokter.setId(resultSet.getInt("id"));

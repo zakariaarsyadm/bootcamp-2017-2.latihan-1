@@ -21,9 +21,12 @@ import lombok.NoArgsConstructor;
 public class Rawat {
 
     private Integer id;
-    private Integer pasienId;
-    private Integer dokterId;
-    private Integer ruangId;
+//    private Integer pasienId;
+//    private Integer dokterId;
+//    private Integer ruangId;
+    private Pasien pasien;
+    private Dokter dokter;
+    private Ruang ruang;
     private Date waktuRegister;
     private Date waktuCheckout;
 

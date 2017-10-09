@@ -10,15 +10,15 @@
             <input type="hidden" name="id" value="${pasien.id}">
             <div>
                 <label for="nama">Nama : </label>
-                <input type="text" name="nama" id="${pasien.nama}"/>
+                <input type="text" name="nama" id="nama" value="${pasien.nama}"/>
             </div>
             <div>
                 <label for="alamat">Alamat : </label>
-                <input type="text" name="alamat" id="${pasien.alamat}"/>
+                <input type="text" name="alamat" id="alamat" value="${pasien.alamat}"/>
             </div>
             <div>
                 <label for="tanggalLahir">Tanggal Lahir : </label>
-                <input type="date" name="tanggalLahir" id="${pasien.tanggalLahir}"/>
+                <input type="date" name="tanggalLahir" id="tanggalLahir" value="${pasien.tanggalLahir}"/>
             </div>
             <div>
                 <button type="submit">Kirim</button>
